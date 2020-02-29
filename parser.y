@@ -52,7 +52,7 @@ public:
 
 extern int yylex();
 extern size_t line_number;
-extern char *current_file;
+extern std::string current_file;
 static bool success = true;
 
 static Domain* domain;
@@ -1269,7 +1269,7 @@ yyerror( const char *s )
 static void
 yyerror( const std::string &s )
 {
-  std::cout << ':' << line_number << ": " << s
+  std::cout << "<parser>:" << current_file << ':' << line_number << ": " << s
 	    << std::endl;
   success = false;
 }
@@ -1279,7 +1279,7 @@ yywarning( const std::string &s )
 {
   if( gpt::warning_level > 0 )
     {
-      std::cout << ':' << line_number << ": " << s
+      std::cout << "<parser>:" << current_file << ':' << line_number << ": " << s
 		<< std::endl;
       if( gpt::warning_level > 1 )
 	success = false;
