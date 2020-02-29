@@ -42,20 +42,18 @@ sessionEndInfo( XMLNodePtr node, std::ostream &os, unsigned total_steps )
     return;
   else
     {
-      assert( node->size() == 5 );
+      assert( node->size() == 4 );
       XMLNodePtr id = node->getChild( 0 );
-      XMLNodePtr problem = node->getChild( 1 );
-      XMLNodePtr rounds = node->getChild( 2 );
-      XMLNodePtr goals = node->getChild( 3 );
+      XMLNodePtr rounds = node->getChild( 1 );
+      XMLNodePtr goals = node->getChild( 2 );
       XMLNodePtr failed = goals->getChild( 0 );
       XMLNodePtr reached = goals->getChild( 1 );
       XMLNodePtr success = reached->getChild( 0 );
       XMLNodePtr time = reached->getChild( 1 );
-      XMLNodePtr metric = node->getChild( 4 );
+      XMLNodePtr metric = node->getChild( 3 );
 
       unsigned number_success = atoi( success->getText().c_str() );
       os << "<session>: id = " << id->getText() << std::endl;
-      os << "<session>: problem = " << problem->getText() << std::endl;
       os << "<session>: rounds = " << rounds->getText() << std::endl;
       os << "<session>: failed = " << failed->getText() << std::endl;
       if( time )

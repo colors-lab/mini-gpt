@@ -161,7 +161,7 @@ class atomMinMForwardHeuristic_t : public heuristic_t
   };
 
 public:
-  atomMinMForwardHeuristic_t( const problem_t &problem, unsigned m );
+  atomMinMForwardHeuristic_t( const problem_t &problem, size_t m );
   virtual ~atomMinMForwardHeuristic_t();
   virtual double value( const state_t &state );
   virtual void statistics( std::ostream &os ) const;
@@ -268,7 +268,7 @@ private:
   enum { OPEN = 0x100, CLOSED = 0x200 };
 
 public:
-  atomMinMBackwardHeuristic_t( const problem_t &problem, unsigned m );
+  atomMinMBackwardHeuristic_t( const problem_t &problem, size_t m );
   virtual ~atomMinMBackwardHeuristic_t();
   virtual double value( const state_t &state );
   virtual void statistics( std::ostream &os ) const;
